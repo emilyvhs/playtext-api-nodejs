@@ -7,3 +7,9 @@ const app = express()
 const PORT = process.env.PORT 
 
 connectToDB()
+
+app.use(express.json())
+
+app.listen(PORT, () => {
+    console.log(`Server is connected at ${PORT}`)
+})
