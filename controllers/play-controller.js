@@ -77,7 +77,39 @@ const addNewPlay = async (req, res) => {
 }
 
 const updatePlay = async (req, res) => {
-    
+    try {
+        const getPlayId = req.params.id
+        const updatedPlayData = req.body
+
+        if(!updatedPlayData) {
+            return res.status(400).json({
+                success : false,
+                message : 'No data sent - nothing to update!'
+            })
+        }
+
+        const updatedPlay = await Play.findByIdAndUpdate(getPlayId, updatedPlayData, {new:true})
+
+        if(!updatedPlay) {
+            return res.status(404).json({
+                success : false,
+                message : 'Play not found!'
+            })
+        }
+
+        res.status(200).json({
+            success : true,
+            message : 'Play updated successfully',
+            data : updatedPlay
+        })
+
+    } catch(e) {
+        console.log(e)
+        res.status(500).json({
+            success : false,
+            message : 'Something went wrong! Please try again'
+        })
+    }
 }
 
 const deletePlay = async (req, res) => {
