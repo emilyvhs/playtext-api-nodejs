@@ -81,7 +81,30 @@ const updatePlay = async (req, res) => {
 }
 
 const deletePlay = async (req, res) => {
-    
+    try {
+        const getPlayId = req.params.id
+        const deletedPlay = await Play.findByIdAndDelete(getPlayId)
+
+        if(!deletedPlay) {
+            return res.status(404).json({
+                success : false,
+                message : 'Play not found!'
+            })
+        }
+
+        res.status(200).json({
+            success : true,
+            message : 'Play deleted',
+            data : deletedPlay
+        })
+
+    } catch(e) {
+        console.log(e)
+        res.status(500).json({
+            success : false,
+            message : 'Something went wrong! Please try again'
+        })
+    }
 }
 
 module.exports = {
