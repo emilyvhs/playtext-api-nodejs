@@ -28,6 +28,30 @@ const getAllPlays = async (req, res) => {
 }
 
 const getSinglePlay = async (req, res) => {
+    try {
+        const getPlayId = req.params.id
+        const singlePlay = await Play.findById(getPlayId)
+
+        if(!singlePlay) {
+            return res.status(404).json({
+                success : false,
+                message : 'Play not found!'
+            })
+        }
+
+        res.status(200).json({
+            success : true,
+            message : 'Play retrieved successfully',
+            data : singlePlay
+        })
+
+    } catch(e) {
+        console.log(e)
+        res.status(500).json({
+            success : false,
+            message : 'Something went wrong! Please try again'
+        })
+    }
     
 }
 
