@@ -1,6 +1,29 @@
 const Play = require('../models/Play')
 
 const getAllPlays = async (req, res) => {
+    try {
+        const allPlays = await Play.find({})
+
+        if(allPlays?.length > 0) {
+            return res.status(200).json({
+                success : true,
+                message : 'All plays retrieved successfully',
+                data : allPlays
+            })
+        }
+
+        res.status(404).json({
+            success : false,
+            message : 'No plays found'
+        })
+
+    } catch(e) {
+        console.log(e)
+        res.status(500).json({
+            success : false,
+            message : 'Something went wrong! Please try again'
+        })
+    }
 
 }
 
