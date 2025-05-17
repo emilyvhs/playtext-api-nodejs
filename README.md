@@ -26,7 +26,7 @@ Required:
 Optional:
 ```JSON
 {
-    "role" : "user" (default) or "admin"    
+    "role" : ["user (default)", "admin"]
 }
 ```
 
@@ -167,7 +167,7 @@ Content:
         "year" : 2025,
         "synopsis" : "Synopsis",
         "castSize" : 4,
-        "publisher" : "Unknown" (default),
+        "publisher" : "Unknown (default)",
         "createdAt" : "2025-05-17T15:49:00.942Z",
         "__v" : 0
     },
@@ -230,7 +230,7 @@ Content:
         "year" : 2025,
         "synopsis" : "Synopsis",
         "castSize" : 4,
-        "publisher" : "Unknown" (default),
+        "publisher" : "Unknown (default)",
         "createdAt" : "2025-05-17T15:49:00.942Z",
         "__v" : 0
     },
@@ -314,7 +314,7 @@ Content:
         "year" : 2025,
         "synopsis" : "Synopsis",
         "castSize" : 4,
-        "publisher" : "Unknown" (default),
+        "publisher" : "Unknown (default)",
         "createdAt" : "2025-05-17T15:49:00.942Z",
         "__v" : 0
     },
@@ -385,7 +385,7 @@ Content:
         "year" : 2025,
         "synopsis" : "Synopsis",
         "castSize" : 4,
-        "publisher" : "Unknown" (default),
+        "publisher" : "Unknown (default)",
         "createdAt" : "2025-05-17T15:49:00.942Z",
         "__v" : 0
     },
@@ -458,7 +458,7 @@ Content:
         "year" : 2025,
         "synopsis" : "Synopsis",
         "castSize" : 4,
-        "publisher" : "Unknown" (default),
+        "publisher" : "Unknown (default)",
         "createdAt" : "2025-05-17T15:49:00.942Z",
         "__v" : 0
     },
