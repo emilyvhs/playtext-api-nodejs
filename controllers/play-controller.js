@@ -37,6 +37,9 @@ const getAllPlays = async (req, res) => {
 }
 
 const getSinglePlay = async (req, res) => {
+
+    const {userId, name, role} = req.userInfo
+
     try {
         const getPlayId = req.params.id
         const singlePlay = await Play.findById(getPlayId)
@@ -51,7 +54,12 @@ const getSinglePlay = async (req, res) => {
         res.status(200).json({
             success : true,
             message : 'Play retrieved successfully',
-            data : singlePlay
+            data : singlePlay,
+            user : {
+                    _id : userId,
+                    name : name,
+                    role : role
+                }    
         })
 
     } catch(e) {

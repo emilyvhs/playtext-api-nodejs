@@ -18,7 +18,9 @@ const router = express.Router()
 
 //get all plays route - log in required
 router.get('/all', authMiddleware, getAllPlays)
-router.get('/:id', getSinglePlay)
+
+//get single play route - log in required
+router.get('/:id', authMiddleware, getSinglePlay)
 
 router.post('/add', addNewPlay)
 router.put('/update/:id', updatePlay)
