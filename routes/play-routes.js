@@ -1,8 +1,9 @@
 //require in express
 const express = require('express')
 
-//require in auth middleware
+//require in middleware
 const authMiddleware = require('../middleware/auth-middleware')
+const adminMiddleware = require('../middleware/admin-middleware')
 
 //require in all play functions from controller
 const {
@@ -17,13 +18,31 @@ const {
 const router = express.Router()
 
 //get all plays route - log in required
-router.get('/all', authMiddleware, getAllPlays)
+router.get('/all', 
+    authMiddleware, 
+    getAllPlays)
 
 //get single play route - log in required
-router.get('/:id', authMiddleware, getSinglePlay)
+router.get('/:id', 
+    authMiddleware, 
+    getSinglePlay)
 
-router.post('/add', addNewPlay)
-router.put('/update/:id', updatePlay)
-router.delete('/delete/:id', deletePlay)
+//add new play route - log in + admin authorisation required
+router.post('/add', 
+    authMiddleware, 
+    adminMiddleware, 
+    addNewPlay)
+
+//update play route - log in + admin authorisation required
+router.put('/update/:id', 
+    authMiddleware, 
+    adminMiddleware, 
+    updatePlay)
+
+//delete play route - log in + admin authorisation required
+router.delete('/delete/:id', 
+    authMiddleware, 
+    adminMiddleware, 
+    deletePlay)
 
 module.exports = router

@@ -73,6 +73,9 @@ const getSinglePlay = async (req, res) => {
 }
 
 const addNewPlay = async (req, res) => {
+
+    const {userId, name, role} = req.userInfo
+
     try {
         const newPlayData = req.body
         const newlyCreatedPlay = await Play.create(newPlayData)
@@ -81,7 +84,12 @@ const addNewPlay = async (req, res) => {
             res.status(201).json({
                 success : true,
                 message : 'New play added successfully',
-                data : newlyCreatedPlay
+                data : newlyCreatedPlay,
+                user : {
+                    _id : userId,
+                    name : name,
+                    role : role
+                } 
             })
         }
     } catch(e) {
@@ -94,6 +102,9 @@ const addNewPlay = async (req, res) => {
 }
 
 const updatePlay = async (req, res) => {
+    
+    const {userId, name, role} = req.userInfo
+
     try {
         const getPlayId = req.params.id
         const updatedPlayData = req.body
@@ -117,7 +128,12 @@ const updatePlay = async (req, res) => {
         res.status(200).json({
             success : true,
             message : 'Play updated successfully',
-            data : updatedPlay
+            data : updatedPlay,
+            user : {
+                    _id : userId,
+                    name : name,
+                    role : role
+                } 
         })
 
     } catch(e) {
@@ -130,6 +146,9 @@ const updatePlay = async (req, res) => {
 }
 
 const deletePlay = async (req, res) => {
+
+    const {userId, name, role} = req.userInfo
+
     try {
         const getPlayId = req.params.id
         const deletedPlay = await Play.findByIdAndDelete(getPlayId)
@@ -144,7 +163,12 @@ const deletePlay = async (req, res) => {
         res.status(200).json({
             success : true,
             message : 'Play deleted',
-            data : deletedPlay
+            data : deletedPlay,
+            user : {
+                    _id : userId,
+                    name : name,
+                    role : role
+                } 
         })
 
     } catch(e) {
