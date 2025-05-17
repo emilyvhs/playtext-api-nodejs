@@ -18,7 +18,7 @@ const {
 const router = express.Router()
 
 //get all plays route - log in required
-router.get('/all', 
+router.get('/', 
     authMiddleware, 
     getAllPlays)
 
