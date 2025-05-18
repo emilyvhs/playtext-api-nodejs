@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const connectToDB = require('./database/db')
 const playRoutes = require('./routes/play-routes')
 const userRoutes = require('./routes/user-routes')
@@ -11,6 +12,7 @@ const PORT = process.env.PORT
 connectToDB()
 
 app.use(express.json())
+app.use(cors())
 app.use('/api/plays', playRoutes)
 app.use('/api/user', userRoutes)
 
