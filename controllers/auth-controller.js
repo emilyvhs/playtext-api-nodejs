@@ -90,7 +90,7 @@ const loginUser = async (req, res) => {
             name : user.name,
             role : user.role
         }, process.env.JWT_SECRET_KEY, {
-            expiresIn : '15m'
+            expiresIn : '60m'
         })
 
         //pass the token in the response
